@@ -20,6 +20,7 @@ const keys = {
 let my = {
   x : 0,
   y : 0,
+  headed : keys.right,
 }
 
 
@@ -31,14 +32,15 @@ function render() {
   // render player
   ctx.fillStyle = "white";
   ctx.fillRect (my.x * scale, my.y * scale, scale, scale);
+
+  movePlayer(my.headed);
 }
 
-window.onkeydown = function(e) {
-  const { keyCode } = e;
-  dev.textContent = keyCode;
+function movePlayer(key)
+{
   const { up, left, right, down } = keys;
 
-  switch(keyCode)
+  switch(key)
   {
     case up:
       --my.y;break;
@@ -49,7 +51,14 @@ window.onkeydown = function(e) {
     case right:
       ++my.x;break;
   }
+  my.headed = key;
+}
 
+window.onkeydown = function(e) {
+  const { keyCode } = e;
+  dev.textContent = keyCode;
+
+  movePlayer(keyCode);
 }
 
 setInterval(render, 100);

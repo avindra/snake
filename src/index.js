@@ -16,7 +16,9 @@ function render() {
 
   // render player
   ctx.fillStyle = "white";
-  ctx.fillRect (player.x * scale, player.y * scale, scale, scale);
+  player.points.forEach(p =>
+    ctx.fillRect (p.x * scale, p.y * scale, scale, scale)
+  );
 
   // render food
   ctx.fillStyle = "red";

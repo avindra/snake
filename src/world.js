@@ -1,5 +1,5 @@
-import keys from "./keys";
 import Point from "./point";
+import Player from "./player";
 
 const data = {};
 
@@ -16,38 +16,28 @@ function moveFood()
     random(0, width - 1),
     random(0, height - 1)
   );
+  ++data.player.tail;
 }
 
 export function tick() {
-  const { up, left, right, down } = keys;
   const { player } = data;
+  const playerPos = player.getHead();
 
-  if(player.x == data.food.x
-  && player.y == data.food.y)
+  if(playerPos.x == data.food.x
+  && playerPos.y == data.food.y)
   {
     moveFood();
+    player.consume();
   }
 
-  switch(player.headed)
-  {
-    case up:
-      --player.y;break;
-    case down:
-      ++player.y;break;
-    case left:
-      --player.x;break;
-    case right:
-      ++player.x;break;
-  }
+  player.tick();
 }
 
 export function init() {
   data.height = 20;
   data.width = 40;
 
-  data.player = new Point();
-  data.player.headed = keys.right;
-
+  data.player = new Player();
   data.food = new Point();
   moveFood();
 

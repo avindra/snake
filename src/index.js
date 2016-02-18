@@ -52,14 +52,14 @@ function movePlayer(key)
     case right:
       ++my.x;break;
   }
-  my.headed = key;
 }
 
 window.onkeydown = function(e) {
   const { keyCode } = e;
+  e.preventDefault();
   dev.textContent = keyCode;
 
-  movePlayer(keyCode);
+  my.headed = keyCode;
 }
 
 setInterval(render, 100);

@@ -13,8 +13,8 @@ function random(min, max)
 function spawnFood()
 {
   food = {
-    x : random(0, width),
-    y : random(0, height),
+    x : random(0, width - 1),
+    y : random(0, height - 1),
   };
   return food;
 }

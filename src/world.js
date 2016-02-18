@@ -1,8 +1,8 @@
+import keys from "./keys";
+
 const data = {};
 let height;
 let width;
-
-let food = {};
 
 function random(min, max)
 {
@@ -12,16 +12,23 @@ function random(min, max)
 
 function spawnFood()
 {
-  food = {
+  return {
     x : random(0, width - 1),
     y : random(0, height - 1),
   };
-  return food;
 }
 
-export function getFood() {
+export function init() {
   height = 20;
   width = 40;
 
-  return spawnFood();
+  data.player = {
+    x : 0,
+    y : 0,
+    headed : keys.right,
+  };
+
+  data.food = spawnFood();
+
+  return data;
 }

@@ -2,24 +2,12 @@ const $ = (a) => document.getElementById(a);
 const dev = $('dev');
 const canvas = $('game');
 const ctx = canvas.getContext('2d');
-import { getFood } from "./world";
+import { init } from "./world";
+import keys from "./keys";
 
 const scale = 10;
 
-const keys = {
-  up : 38,
-  down : 40,
-  left : 37,
-  right : 39,
-}
-
-let my = {
-  x : 0,
-  y : 0,
-  headed : keys.right,
-}
-
-let food = getFood();
+const { food, player } = init();
 
 function render() {
   // render background
@@ -28,13 +16,13 @@ function render() {
 
   // render player
   ctx.fillStyle = "white";
-  ctx.fillRect (my.x * scale, my.y * scale, scale, scale);
+  ctx.fillRect (player.x * scale, player.y * scale, scale, scale);
 
   // render food
   ctx.fillStyle = "red";
   ctx.fillRect (food.x * scale, food.y * scale, scale, scale);
 
-  movePlayer(my.headed);
+  movePlayer(player.headed);
 }
 
 function movePlayer(key)
@@ -44,22 +32,34 @@ function movePlayer(key)
   switch(key)
   {
     case up:
-      --my.y;break;
+      --player.y;break;
     case down:
-      ++my.y;break;
+      ++player.y;break;
     case left:
-      --my.x;break;
+      --player.x;break;
     case right:
-      ++my.x;break;
+      ++player.x;break;
   }
 }
 
 window.onkeydown = function(e) {
   const { keyCode } = e;
-  e.preventDefault();
+
+  /**
+   * If we respond to any of the keys,
+   * disable the native browser response.
+  **/
+  Object
+    .keys(keys)
+    .map(k => keys[k])
+    .forEach(code => {
+      if(code == keyCode)
+        e.preventDefault();
+    })
+
   dev.textContent = keyCode;
 
-  my.headed = keyCode;
+  player.headed = keyCode;
 }
 
 setInterval(render, 100);

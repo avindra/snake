@@ -2,7 +2,7 @@ const $ = (a) => document.getElementById(a);
 const dev = $('dev');
 const canvas = $('game');
 const ctx = canvas.getContext('2d');
-import { init } from "./world";
+import { init, tick } from "./world";
 import keys from "./keys";
 
 const scale = 10;
@@ -21,25 +21,7 @@ function render() {
   // render food
   ctx.fillStyle = "red";
   ctx.fillRect (food.x * scale, food.y * scale, scale, scale);
-
-  movePlayer(player.headed);
-}
-
-function movePlayer(key)
-{
-  const { up, left, right, down } = keys;
-
-  switch(key)
-  {
-    case up:
-      --player.y;break;
-    case down:
-      ++player.y;break;
-    case left:
-      --player.x;break;
-    case right:
-      ++player.x;break;
-  }
+  tick();
 }
 
 window.onkeydown = function(e) {
@@ -54,12 +36,13 @@ window.onkeydown = function(e) {
     .map(k => keys[k])
     .forEach(code => {
       if(code == keyCode)
+      {
         e.preventDefault();
+        player.headed = keyCode;
+      }
     })
 
-  dev.textContent = keyCode;
-
-  player.headed = keyCode;
+  dev.textContent = `Last keycode -> ${ keyCode }`;
 }
 
 canvas.width = width * scale;

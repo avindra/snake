@@ -1,6 +1,6 @@
 {
   "name": "snake",
-  "version": "1.0.0",
+  "version": "0.1-pre",
   "description": "A game of snake for the browser using web technologies.",
   "main": "index.js",
   "scripts": {

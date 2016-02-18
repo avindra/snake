@@ -2,11 +2,7 @@ const $ = (a) => document.getElementById(a);
 const dev = $('dev');
 const canvas = $('game');
 const ctx = canvas.getContext('2d');
-
-const gamesize = {
-  width : 40,
-  height : 20,
-};
+import { getFood } from "./world";
 
 const scale = 10;
 
@@ -23,6 +19,7 @@ let my = {
   headed : keys.right,
 }
 
+let food = getFood();
 
 function render() {
   // render background
@@ -32,6 +29,10 @@ function render() {
   // render player
   ctx.fillStyle = "white";
   ctx.fillRect (my.x * scale, my.y * scale, scale, scale);
+
+  // render food
+  ctx.fillStyle = "red";
+  ctx.fillRect (food.x * scale, food.y * scale, scale, scale);
 
   movePlayer(my.headed);
 }

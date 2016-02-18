@@ -7,7 +7,7 @@ import keys from "./keys";
 
 const scale = 10;
 
-const { food, player } = init();
+const { food, player, width, height } = init();
 
 function render() {
   // render background
@@ -62,4 +62,6 @@ window.onkeydown = function(e) {
   player.headed = keyCode;
 }
 
+canvas.width = width * scale;
+canvas.height = height * scale;
 setInterval(render, 100);

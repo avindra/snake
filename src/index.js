@@ -11,19 +11,22 @@ const { food, player, width, height } = init();
 
 function render() {
   // render background
-  ctx.fillStyle = "black";
+  ctx.fillStyle = 'black';
   ctx.fillRect (0, 0, canvas.width, canvas.height);
 
+  const { alive } = player;
+
+  ctx.fillStyle = alive ? 'white' : 'red';
   // render player
-  ctx.fillStyle = "white";
   player.points.forEach(p =>
     ctx.fillRect (p.x * scale, p.y * scale, scale, scale)
   );
 
   // render food
-  ctx.fillStyle = "red";
+  ctx.fillStyle = alive ? 'red' : 'blue';
   ctx.fillRect (food.x * scale, food.y * scale, scale, scale);
-  tick();
+
+  if(alive) tick();
 }
 
 window.onkeydown = function(e) {

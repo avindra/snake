@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 import { init, tick } from "./world";
 import keys from "./keys";
 
-const scale = 10;
+const scale = 19;
 
 const { food, player, width, height } = init();
 
@@ -23,7 +23,7 @@ function render() {
   );
 
   // render food
-  ctx.fillStyle = alive ? 'red' : 'blue';
+  ctx.fillStyle = alive ? 'red' : 'white';
   ctx.fillRect (food.x * scale, food.y * scale, scale, scale);
 
   if(alive) tick();

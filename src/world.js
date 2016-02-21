@@ -75,7 +75,7 @@ export function tick() {
 
 export function init() {
   data.height = 20;
-  data.width = 40;
+  data.width = 20;
 
   data.player = new Player();
   data.food = new Point();

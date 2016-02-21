@@ -9,4 +9,9 @@ export default class Point {
     this.x = x;
     this.y = y;
   }
+
+  equals(p)
+  {
+    return this.x == p.x && this.y == p.y;
+  }
 }

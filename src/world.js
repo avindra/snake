@@ -8,14 +8,45 @@ function random(min, max)
   const { floor, random } = Math;
   return floor(random() * (max - min + 1)) + min;
 }
+/* check if food spawn point is on top
+ * of the tail
+*/
+function blockingTail(target)
+{
+
+  const { points } = data.player;
+  for(let i = 0; i < points.length; ++i)
+  {
+    const p = points[i];
+    if(p.equals(target))
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 function moveFood()
 {
   const { width, height } = data;
+
+  let potentialTarget;
+
+  do
+  {
+    potentialTarget = new Point(
+      random(0, width - 1),
+      random(0, height - 1)
+    );
+  } while(blockingTail(potentialTarget));
+
+
   data.food.move(
-    random(0, width - 1),
-    random(0, height - 1)
+    potentialTarget.x,
+    potentialTarget.y
   );
+
   ++data.player.tail;
 }
 

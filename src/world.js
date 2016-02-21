@@ -61,7 +61,16 @@ export function tick() {
     player.consume();
   }
 
-  player.tick();
+  /* detect wall collisions */
+  const newPos = player.tick();
+  const { x, y } = newPos;
+  if (
+    x < 0 || y < 0
+    || x > data.width - 1 || y > data.height - 1
+  )
+  {
+    player.alive = false;
+  }
 }
 
 export function init() {

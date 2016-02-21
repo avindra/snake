@@ -51,8 +51,8 @@ export default class Player
       if(p.x == newHead.x && p.y == newHead.y)
       {
         this.alive = false;
-        console.log("RIP");
       }
     });
+    return newHead;
   }
 }

@@ -1,4 +1,4 @@
-# Snake
+# Snake  [![Build Status](https://img.shields.io/travis/avindra/snake/master.svg?style=flat)](https://travis-ci.org/avindra/snake)
 
 This is a simple game of snake implemented using various web technologies and JavaScript (`ES6`, `canvas`, `Web Audio`, to name a few).
 

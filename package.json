@@ -1,10 +1,11 @@
 {
   "name": "snake",
-  "version": "0.1-pre",
+  "version": "0.0.1",
   "description": "A game of snake for the browser using web technologies.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack -p && echo '\nGame is built, visit index.html to play'",
+    "test": "echo \"Error: no tests yet\" && exit 1"
   },
   "keywords": [
     "snake",

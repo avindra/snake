@@ -51,4 +51,5 @@ window.onkeydown = e => {
 
 canvas.width = width * scale;
 canvas.height = height * scale;
+dev.textContent = '';
 setInterval(render, 100);

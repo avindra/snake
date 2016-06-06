@@ -11,7 +11,7 @@ export default function beep() {
 
   frequency += Math.random() > .5 ? 50 : 20;
 
-  if(frequency > 150) frequency  = 20;
+  if (frequency > 150) frequency = 20;
 
   osc.frequency.value = frequency;
   osc.type = 'sawtooth';

@@ -1,5 +1,5 @@
-import Point from "./point";
-import Player from "./player";
+import Point from './point';
+import Player from './player';
 
 const data = {};
 
@@ -15,10 +15,10 @@ function blockingTail(target)
 {
 
   const { points } = data.player;
-  for(let i = 0; i < points.length; ++i)
+  for (let i = 0; i < points.length; ++i)
   {
     const p = points[i];
-    if(p.equals(target))
+    if (p.equals(target))
     {
       return true;
     }
@@ -39,7 +39,7 @@ function moveFood()
       random(0, width - 1),
       random(0, height - 1)
     );
-  } while(blockingTail(potentialTarget));
+  } while (blockingTail(potentialTarget));
 
 
   data.food.move(
@@ -54,7 +54,7 @@ export function tick() {
   const { player } = data;
   const playerPos = player.getHead();
 
-  if(playerPos.x == data.food.x
+  if (playerPos.x == data.food.x
   && playerPos.y == data.food.y)
   {
     moveFood();

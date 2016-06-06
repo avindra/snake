@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack -p && echo '\nGame is built, visit index.html to play'",
-    "test": "echo \"Error: no tests yet\" && exit 1"
+    "test": "mocha --compilers js:babel-register --recursive"
   },
   "keywords": [
     "snake",
@@ -16,12 +16,15 @@
     "babel-core": "^6.5.2",
     "babel-loader": "^6.2.2",
     "babel-preset-es2015": "^6.5.0",
+    "babel-register": "^6.9.0",
     "eslint": "^2.11.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.3.0",
     "eslint-plugin-react": "^5.1.1",
+    "expect": "^1.20.1",
+    "mocha": "^2.5.3",
     "webpack": "^1.12.13"
   },
   "author": "Avindra Goolcharan",

@@ -29,7 +29,7 @@ function render() {
   if (alive) tick();
 }
 
-window.onkeydown = function (e) {
+window.onkeydown = e => {
   const { keyCode } = e;
 
   /**
@@ -40,8 +40,7 @@ window.onkeydown = function (e) {
     .keys(keys)
     .map(k => keys[k])
     .forEach(code => {
-      if (code == keyCode)
-      {
+      if (code === keyCode) {
         e.preventDefault();
         player.headed = keyCode;
       }

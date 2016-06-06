@@ -3,23 +3,18 @@ import Player from './player';
 
 const data = {};
 
-function random(min, max)
-{
+function rand(min, max) {
   const { floor, random } = Math;
   return floor(random() * (max - min + 1)) + min;
 }
 /* check if food spawn point is on top
  * of the tail
 */
-function blockingTail(target)
-{
-
+function blockingTail(target) {
   const { points } = data.player;
-  for (let i = 0; i < points.length; ++i)
-  {
+  for (let i = 0; i < points.length; ++i) {
     const p = points[i];
-    if (p.equals(target))
-    {
+    if (p.equals(target)) {
       return true;
     }
   }
@@ -27,17 +22,15 @@ function blockingTail(target)
   return false;
 }
 
-function moveFood()
-{
+function moveFood() {
   const { width, height } = data;
 
   let potentialTarget;
 
-  do
-  {
+  do {
     potentialTarget = new Point(
-      random(0, width - 1),
-      random(0, height - 1)
+      rand(0, width - 1),
+      rand(0, height - 1)
     );
   } while (blockingTail(potentialTarget));
 
@@ -54,9 +47,8 @@ export function tick() {
   const { player } = data;
   const playerPos = player.getHead();
 
-  if (playerPos.x == data.food.x
-  && playerPos.y == data.food.y)
-  {
+  if (playerPos.x === data.food.x
+  && playerPos.y === data.food.y) {
     moveFood();
     player.consume();
   }
@@ -67,8 +59,7 @@ export function tick() {
   if (
     x < 0 || y < 0
     || x > data.width - 1 || y > data.height - 1
-  )
-  {
+  ) {
     player.alive = false;
   }
 }
@@ -81,8 +72,8 @@ export function init() {
   data.food = new Point();
   moveFood();
 
-  console.log('player', data.player);
-  console.log('food', data.food);
+  console.log('player', data.player); // eslint-disable-line no-console
+  console.log('food', data.food); // eslint-disable-line no-console
 
   return data;
 }

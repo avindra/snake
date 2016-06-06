@@ -4,21 +4,18 @@ import beep from './sound';
 
 export default class Player
 {
-  constructor()
-  {
+  constructor() {
     this.points = [new Point()];
     this.headed = keys.right;
     this.tail = 0;
     this.alive = true;
   }
 
-  getHead()
-  {
+  getHead() {
     return this.points[0];
   }
 
-  consume()
-  {
+  consume() {
     this.points.push(Object.assign({},
       this.getHead()
     ));
@@ -26,15 +23,13 @@ export default class Player
     beep();
   }
 
-  tick()
-  {
+  tick() {
     const { up, left, right, down } = keys;
 
     const head = this.getHead();
 
     const newHead = new Point(head.x, head.y);
-    switch (this.headed)
-    {
+    switch (this.headed) {
       case up:
         --newHead.y; break;
       case down:
@@ -43,13 +38,14 @@ export default class Player
         --newHead.x; break;
       case right:
         ++newHead.x; break;
+      default:
+        throw new Error('wat');
     }
 
     this.points.unshift(newHead);
     this.points.pop();
     this.points.slice(1).forEach(p => {
-      if (p.x == newHead.x && p.y == newHead.y)
-      {
+      if (p.x === newHead.x && p.y === newHead.y) {
         this.alive = false;
       }
     });

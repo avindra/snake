@@ -6,10 +6,10 @@ masterVolume.connect(context.destination);
 let frequency = 20;
 
 export default function beep() {
-  let osc = context.createOscillator();
-  let osc2 = context.createOscillator();
+  const osc = context.createOscillator();
+  const osc2 = context.createOscillator();
 
-  frequency += Math.random() > .5 ? 50 : 20;
+  frequency += Math.random() > 0.5 ? 50 : 20;
 
   if (frequency > 150) frequency = 20;
 
@@ -25,6 +25,6 @@ export default function beep() {
   osc.start(context.currentTime);
   osc2.start(context.currentTime);
 
-  osc.stop(context.currentTime + .25);
-  osc2.stop(context.currentTime + .25);
+  osc.stop(context.currentTime + 0.25);
+  osc2.stop(context.currentTime + 0.25);
 }

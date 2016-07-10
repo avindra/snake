@@ -1,7 +1,7 @@
-const path = require('path');
-
-module.exports = {
-  entry: './src/index.js',
+const config = {
+  entry: {
+    app : ['./src/index.js'],
+  },
   output: {
     path: __dirname + '/dist',
     filename: 'app.js',
@@ -21,3 +21,5 @@ module.exports = {
     ],
   },
 };
+
+module.exports = config;

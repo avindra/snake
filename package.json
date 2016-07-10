@@ -4,7 +4,8 @@
   "description": "A game of snake for the browser using web technologies.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -p && echo '\nGame is built, visit index.html to play'",
+    "build": "webpack -p",
+    "dev": "export NODE_ENV=development && node src/dev.js",
     "test": "mocha --compilers js:babel-register --recursive"
   },
   "keywords": [
@@ -25,7 +26,8 @@
     "eslint-plugin-react": "^5.1.1",
     "expect": "^1.20.1",
     "mocha": "^2.5.3",
-    "webpack": "^1.12.13"
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
   },
   "author": "Avindra Goolcharan",
   "license": "MIT",

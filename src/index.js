@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 import { init, tick } from './world';
 import keys from './keys';
 
-const scale = 19;
+const scale = 20;
 
 const { food, player, width, height } = init();
 

@@ -4,15 +4,22 @@ This is a simple game of snake implemented using various web technologies and Ja
 
 It is both an experiment in implementing the game of snake and in using some of the latest web technologies.
 
-## Installation / how to play
+[Click here to play!](https://avindra.github.io/snake)
 
-First, build the project:
+## Development
 
 ```bash
-npm install && npm start
+npm run dev
 ```
 
-Then, view the `index.html` page with your browser.
+Visit http://localhost:8080 in your browser
+
+## Production build
+
+```
+npm run build
+```
+
 
 ## TODO
 

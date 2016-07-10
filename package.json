@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack -p && mv dist/app.js dist/app_new.js",
     "dev": "export NODE_ENV=development && node src/dev.js",
-    "test": "mocha --compilers js:babel-register --recursive"
+    "test": "mocha --compilers js:babel-register --recursive",
+    "lint": "eslint ."
   },
   "keywords": [
     "snake",

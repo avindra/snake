@@ -1,5 +1,6 @@
 import Point from './point';
 import Player from './player';
+import beep from './sound';
 
 const data = {};
 
@@ -51,6 +52,7 @@ export function tick() {
   && playerPos.y === data.food.y) {
     moveFood();
     player.consume();
+    beep();
   }
 
   /* detect wall collisions */

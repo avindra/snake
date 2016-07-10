@@ -1,6 +1,5 @@
 import Point from './point';
 import keys from './keys';
-import beep from './sound';
 
 export default class Player
 {
@@ -20,7 +19,6 @@ export default class Player
       this.getHead()
     ));
     ++this.tail;
-    beep();
   }
 
   tick() {

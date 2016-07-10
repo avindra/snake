@@ -6,3 +6,10 @@ cache:
 
 node_js:
   - stable
+
+env:
+  - CMD=test
+  - CMD=lint
+  - CMD=build
+
+script: npm run $CMD

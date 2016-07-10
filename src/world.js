@@ -64,9 +64,9 @@ export function tick() {
   }
 }
 
-export function init() {
-  data.height = 20;
-  data.width = 20;
+export function init(width, height) {
+  data.width = width;
+  data.height = height;
 
   data.player = new Player();
   data.food = new Point();
@@ -74,6 +74,5 @@ export function init() {
 
   console.log('player', data.player); // eslint-disable-line no-console
   console.log('food', data.food); // eslint-disable-line no-console
-
   return data;
 }

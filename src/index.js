@@ -6,10 +6,13 @@ import { init, tick } from './world';
 import keys from './keys';
 
 const scale = 20;
+const width = 20;
+const height = 20;
 
-const { food, player, width, height } = init();
+let world = init(width, height);
 
 function render() {
+  const { player, food } = world;
   // render background
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -27,10 +30,18 @@ function render() {
   ctx.fillRect(food.x * scale, food.y * scale, scale, scale);
 
   if (alive) tick();
+
+  dev.textContent = `Your score: ${player.points.length - 1}`;
 }
 
 window.onkeydown = e => {
   const { keyCode } = e;
+  const { player } = world;
+
+  if (keyCode === 82) { // R: reset
+    world = init(width, height);
+  }
+
 
   /**
    * If we respond to any of the keys,
@@ -45,11 +56,8 @@ window.onkeydown = e => {
         player.headed = keyCode;
       }
     });
-
-  dev.textContent = `Last keycode -> ${keyCode}`;
 };
 
 canvas.width = width * scale;
 canvas.height = height * scale;
-dev.textContent = '';
 setInterval(render, 100);

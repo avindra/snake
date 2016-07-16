@@ -32,23 +32,24 @@ function render() {
   // render eyes
   const head = player.getHead();
   ctx.fillStyle = 'green';
-  let xOffset = 0;
-  let yOffset = 0;
+  let currOffset = 0;
   const headX = head.x * scale;
   const headY = head.y * scale;
   const eyeBallSize = scale / 5;
+  const eyeOffset = scale - eyeBallSize;
+  if (player.headed === keys.down || player.headed === keys.right) {
+    currOffset = eyeOffset;
+  }
   switch (player.headed) {
     case keys.down:
-      yOffset = scale - eyeBallSize;
-    case keys.up: // eslint-disable-line no-fallthrough
-      ctx.fillRect(headX, headY + yOffset, eyeBallSize, eyeBallSize);
-      ctx.fillRect(headX + (scale - eyeBallSize), headY + yOffset, eyeBallSize, eyeBallSize);
+    case keys.up:
+      ctx.fillRect(headX, headY + currOffset, eyeBallSize, eyeBallSize);
+      ctx.fillRect(headX + eyeOffset, headY + currOffset, eyeBallSize, eyeBallSize);
       break;
     case keys.right:
-      xOffset = scale - eyeBallSize;
-    case keys.left: // eslint-disable-line no-fallthrough
-      ctx.fillRect(headX + xOffset, headY, eyeBallSize, eyeBallSize);
-      ctx.fillRect(headX + xOffset, headY + (scale - eyeBallSize), eyeBallSize, eyeBallSize);
+    case keys.left:
+      ctx.fillRect(headX + currOffset, headY, eyeBallSize, eyeBallSize);
+      ctx.fillRect(headX + currOffset, headY + eyeOffset, eyeBallSize, eyeBallSize);
       break;
     default:
       throw new Error('wat');

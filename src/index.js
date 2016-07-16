@@ -58,6 +58,7 @@ function render() {
   if (alive) tick();
 
   dev.textContent = `Your score: ${player.points.length - 1}`;
+  setTimeout(() => requestAnimationFrame(render), 80);
 }
 
 window.onkeydown = e => {
@@ -86,4 +87,4 @@ window.onkeydown = e => {
 
 canvas.width = width * scale;
 canvas.height = height * scale;
-setInterval(render, 100);
+requestAnimationFrame(render);

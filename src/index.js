@@ -19,6 +19,10 @@ function render() {
 
   const { alive } = player;
 
+  // render food
+  ctx.fillStyle = alive ? 'red' : 'white';
+  ctx.fillRect(food.x * scale, food.y * scale, scale, scale);
+
   ctx.fillStyle = alive ? 'white' : 'red';
   // render player
   player.points.forEach(p =>
@@ -49,10 +53,6 @@ function render() {
     default:
       throw new Error('wat');
   }
-
-  // render food
-  ctx.fillStyle = alive ? 'red' : 'white';
-  ctx.fillRect(food.x * scale, food.y * scale, scale, scale);
 
   if (alive) tick();
 

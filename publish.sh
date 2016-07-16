@@ -1,6 +1,6 @@
 cd dist
 
-if [[ -f app_new.js ]]; then
+if [[ ! -f "app_new.js" ]]; then
     echo "No new build detected"
     exit 1
 fi

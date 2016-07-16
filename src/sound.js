@@ -3,15 +3,38 @@ const masterVolume = context.createGain();
 
 masterVolume.gain.value = 0.3;
 masterVolume.connect(context.destination);
-let frequency = 20;
+let currentNote = -1;
+let increasing = true;
+
+/* walk up and down C major scale */
+const scale = [
+  16.35,
+  18.35,
+  20.60,
+  21.83,
+  24.50,
+  27.50,
+  30.87,
+  32.70,
+];
 
 export default function beep() {
   const osc = context.createOscillator();
   const osc2 = context.createOscillator();
 
-  frequency += Math.random() > 0.5 ? 50 : 20;
+  if (increasing) {
+    ++currentNote;
+    if (currentNote === scale.length - 1) {
+      increasing = false;
+    }
+  } else {
+    --currentNote;
+    if (currentNote === 0) {
+      increasing = true;
+    }
+  }
 
-  if (frequency > 150) frequency = 20;
+  const frequency = scale[currentNote] * 10;
 
   osc.frequency.value = frequency;
   osc.type = 'sawtooth';

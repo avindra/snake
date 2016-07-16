@@ -25,6 +25,31 @@ function render() {
     ctx.fillRect(p.x * scale, p.y * scale, scale, scale)
   );
 
+  // render eyes
+  const head = player.getHead();
+  ctx.fillStyle = 'green';
+  let xOffset = 0;
+  let yOffset = 0;
+  const headX = head.x * scale;
+  const headY = head.y * scale;
+  const eyeBallSize = scale / 5;
+  switch (player.headed) {
+    case keys.down:
+      yOffset = scale - eyeBallSize;
+    case keys.up: // eslint-disable-line no-fallthrough
+      ctx.fillRect(headX, headY + yOffset, eyeBallSize, eyeBallSize);
+      ctx.fillRect(headX + (scale - eyeBallSize), headY + yOffset, eyeBallSize, eyeBallSize);
+      break;
+    case keys.right:
+      xOffset = scale - eyeBallSize;
+    case keys.left: // eslint-disable-line no-fallthrough
+      ctx.fillRect(headX + xOffset, headY, eyeBallSize, eyeBallSize);
+      ctx.fillRect(headX + xOffset, headY + (scale - eyeBallSize), eyeBallSize, eyeBallSize);
+      break;
+    default:
+      throw new Error('wat');
+  }
+
   // render food
   ctx.fillStyle = alive ? 'red' : 'white';
   ctx.fillRect(food.x * scale, food.y * scale, scale, scale);

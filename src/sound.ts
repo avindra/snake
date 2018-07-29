@@ -6,6 +6,8 @@ masterVolume.connect(context.destination);
 let currentNote = -1;
 let increasing = true;
 
+
+
 /* walk up and down C major scale */
 const scale = [
   16.35,

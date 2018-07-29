@@ -3,14 +3,18 @@ import Player from './player';
 import beep from './sound';
 import { Screen } from './screens';
 
-interface WorldData {
+export interface IWorld {
   screen: Screen;
   player: Player;
   width: number;
   height: number;
   food: Point;
 }
-const data: WorldData = { screen: Screen.INTRO, player: null, width: 0, height: 0, food: null };
+const data: IWorld = { screen: Screen.INTRO, player: null, width: 0, height: 0, food: null };
+
+export function setScreen(screen: Screen) {
+  data.screen = screen;
+}
 
 function rand(min, max) {
   const { floor, random } = Math;

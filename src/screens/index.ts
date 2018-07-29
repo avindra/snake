@@ -1,8 +1,8 @@
 
 enum Screen {
-    INTRO,
-    INGAME,
-    DEAD
+  INTRO,
+  INGAME,
+  DEAD
 }
 
 export { Screen };

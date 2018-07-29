@@ -1,6 +1,6 @@
 const config = {
   entry: {
-    app: ['./src/index.js'],
+    app: ['./src/index.ts'],
   },
   mode: process.env.NODE_ENV,
   output: {
@@ -10,8 +10,8 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loaders: ['babel-loader', 'eslint-loader'],
+        test: /\.[jt]s$/,
+        loaders: ['babel-loader'],
       },
     ],
   },
@@ -20,6 +20,10 @@ const config = {
       'node_modules',
       './src',
     ],
+    extensions: [
+      '.js',
+      '.ts'
+    ]
   },
 };
 

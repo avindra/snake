@@ -1,9 +1,12 @@
-import { init, tick } from './world';
 import keys from './keys';
+import { init, tick } from './world';
+
+import { Screen } from './screens';
+import intro from './screens/intro';
 
 const $ = a => document.getElementById(a);
 const dev = $('dev');
-const canvas = $('game');
+const canvas = $('game') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
 
 const scale = 20;
@@ -13,7 +16,11 @@ const height = 20;
 let world = init(width, height);
 
 function render() {
-  const { player, food } = world;
+  const { player, food, screen } = world;
+  if (screen === Screen.INTRO) {
+    intro(ctx);
+    return;
+  }
   // render background
   ctx.fillStyle = 'black';
   ctx.fillRect(0, 0, canvas.width, canvas.height);

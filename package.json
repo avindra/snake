@@ -7,7 +7,7 @@
     "build": "webpack -p && mv dist/app.js dist/app_new.js",
     "dev": "export NODE_ENV=development && node src/dev.js",
     "test": "mocha --compilers js:babel-register test/",
-    "lint": "eslint ."
+    "lint": "eslint . --ext .js,.ts"
   },
   "keywords": [
     "snake",
@@ -19,9 +19,11 @@
     "webpack-dev-server": "^3.1.5"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/preset-env": "^7.0.0-beta.55",
+    "@babel/preset-typescript": "^7.0.0-beta.55",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^8.0.0-beta",
     "babel-register": "^6.26.0",
     "eslint": "^5.2.0",
     "eslint-config-airbnb": "^17.0.0",

@@ -2,6 +2,11 @@ import Point from './point';
 import keys from './keys';
 
 export default class Player {
+  points: Point[];
+  headed: number;
+  tail: number;
+  alive: boolean;
+
   constructor() {
     this.points = [new Point()];
     this.headed = keys.right;

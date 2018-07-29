@@ -1,8 +1,16 @@
 import Point from './point';
 import Player from './player';
 import beep from './sound';
+import { Screen } from './screens';
 
-const data = {};
+interface WorldData {
+  screen: Screen;
+  player: Player;
+  width: number;
+  height: number;
+  food: Point;
+}
+const data: WorldData = { screen: Screen.INTRO, player: null, width: 0, height: 0, food: null };
 
 function rand(min, max) {
   const { floor, random } = Math;
@@ -49,7 +57,7 @@ export function tick() {
   const playerPos = player.getHead();
 
   if (playerPos.x === data.food.x
-  && playerPos.y === data.food.y) {
+    && playerPos.y === data.food.y) {
     moveFood();
     player.consume();
     beep();

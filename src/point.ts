@@ -1,4 +1,7 @@
 export default class Point {
+  x: number;
+  y: number;
+
   constructor(x = 0, y = 0) {
     this.move(x, y);
   }

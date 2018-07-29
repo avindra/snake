@@ -2,20 +2,21 @@ const config = {
   entry: {
     app: ['./src/index.js'],
   },
+  mode: process.env.NODE_ENV,
   output: {
     path: `${__dirname}/dist`,
     filename: 'app.js',
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: ['babel', 'eslint'],
+        loaders: ['babel-loader', 'eslint-loader'],
       },
     ],
   },
   resolve: {
-    modulesDirectories: [
+    modules: [
       'node_modules',
       './src',
     ],

@@ -1,9 +1,10 @@
-const $ = (a) => document.getElementById(a);
+import { init, tick } from './world';
+import keys from './keys';
+
+const $ = a => document.getElementById(a);
 const dev = $('dev');
 const canvas = $('game');
 const ctx = canvas.getContext('2d');
-import { init, tick } from './world';
-import keys from './keys';
 
 const scale = 20;
 const width = 20;
@@ -25,9 +26,7 @@ function render() {
 
   ctx.fillStyle = alive ? 'white' : 'red';
   // render player
-  player.points.forEach(p =>
-    ctx.fillRect(p.x * scale, p.y * scale, scale, scale)
-  );
+  player.points.forEach(p => ctx.fillRect(p.x * scale, p.y * scale, scale, scale));
 
   // render eyes
   const head = player.getHead();
@@ -61,7 +60,7 @@ function render() {
   setTimeout(() => requestAnimationFrame(render), 80);
 }
 
-window.onkeydown = e => {
+window.onkeydown = (e) => {
   const { keyCode } = e;
   const { player } = world;
 
@@ -73,11 +72,11 @@ window.onkeydown = e => {
   /**
    * If we respond to any of the keys,
    * disable the native browser response.
-  **/
+  * */
   Object
     .keys(keys)
     .map(k => keys[k])
-    .forEach(code => {
+    .forEach((code) => {
       if (code === keyCode) {
         e.preventDefault();
         player.headed = keyCode;

@@ -1,8 +1,7 @@
 import Point from './point';
 import keys from './keys';
 
-export default class Player
-{
+export default class Player {
   constructor() {
     this.points = [new Point()];
     this.headed = keys.right;
@@ -16,13 +15,14 @@ export default class Player
 
   consume() {
     this.points.push(Object.assign({},
-      this.getHead()
-    ));
+      this.getHead()));
     ++this.tail;
   }
 
   tick() {
-    const { up, left, right, down } = keys;
+    const {
+      up, left, right, down,
+    } = keys;
 
     const head = this.getHead();
 
@@ -42,7 +42,7 @@ export default class Player
 
     this.points.unshift(newHead);
     this.points.pop();
-    this.points.slice(1).forEach(p => {
+    this.points.slice(1).forEach((p) => {
       if (p.x === newHead.x && p.y === newHead.y) {
         this.alive = false;
       }

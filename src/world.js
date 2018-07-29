@@ -31,14 +31,14 @@ function moveFood() {
   do {
     potentialTarget = new Point(
       rand(0, width - 1),
-      rand(0, height - 1)
+      rand(0, height - 1),
     );
   } while (blockingTail(potentialTarget));
 
 
   data.food.move(
     potentialTarget.x,
-    potentialTarget.y
+    potentialTarget.y,
   );
 
   ++data.player.tail;

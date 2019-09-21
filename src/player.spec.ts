@@ -1,4 +1,4 @@
-import Player from './../src/player';
+import {Player} from './player';
 import expect from 'expect';
 
 describe('Player', () => {
@@ -7,5 +7,4 @@ describe('Player', () => {
   it('has a head', () => {
     expect(isNaN(p.getHead().x)).toBe(false);
   });
-
 });

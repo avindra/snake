@@ -1,13 +1,12 @@
 {
   "name": "snake",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A game of snake for the browser using web technologies.",
   "main": "index.js",
   "scripts": {
     "build": "webpack -p && mv dist/app.js dist/app_new.js",
     "dev": "export NODE_ENV=development && node src/dev.js",
-    "test": "mocha --compilers js:babel-register test/",
-    "lint": "eslint . --ext .js,.ts"
+    "test": "mocha --require ./register-tests.js src/**/*.spec.ts"
   },
   "keywords": [
     "snake",
@@ -19,20 +18,14 @@
     "webpack-dev-server": "^3.1.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.55",
-    "@babel/preset-env": "^7.0.0-beta.55",
-    "@babel/preset-typescript": "^7.0.0-beta.55",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^8.0.0-beta",
-    "babel-register": "^6.26.0",
-    "eslint": "^5.2.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-loader": "^2.1.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "expect": "^23.4.0",
-    "mocha": "^5.2.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
+    "@babel/register": "^7.6.0",
+    "@types/mocha": "^5.2.7",
+    "babel-loader": "^8.0.6",
+    "expect": "^24.9.0",
+    "mocha": "^6.0.0",
     "webpack-cli": "^3.1.0"
   },
   "author": "Avindra Goolcharan",

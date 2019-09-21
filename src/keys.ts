@@ -12,8 +12,13 @@ const keyMap = {
   right: 39,
   enter: 13,
   R: 82,
+  H: 72,
+  J: 74,
+  K: 75,
+  L: 76,
 }
 
-export const movementKeys = [keyMap.up, keyMap.left, keyMap.right, keyMap.down];
+export const vimKeys = [keyMap.K, keyMap.H, keyMap.L, keyMap.J,];
+export const arrowKeys = [keyMap.up, keyMap.left, keyMap.right, keyMap.down];
 
 export default keyMap as Keys;

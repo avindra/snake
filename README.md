@@ -9,15 +9,17 @@ It is both an experiment in implementing the game of snake and in using some of 
 ## Development
 
 ```bash
-npm run dev
+yarn dev
 ```
+
+Unit tests are co-located with the code.
 
 Visit http://localhost:8080 in your browser
 
 ## Production build
 
 ```
-npm run build
+yarn build
 ```
 
 

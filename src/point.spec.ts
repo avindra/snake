@@ -1,5 +1,5 @@
-import Point from './../src/point'
-import expect from 'expect'
+import Point from './point'
+import expect from 'expect';
 
 describe('Point', () => {
   const p = new Point(4, 8);

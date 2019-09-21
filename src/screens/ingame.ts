@@ -5,7 +5,7 @@ import { tick } from './../world';
 
 import death from './death';
 export default (ctx: CanvasRenderingContext2D, world: IWorld, canvas: HTMLCanvasElement, scale: number) => {
-    const { player, food } = world;
+    const { player, food,} = world;
     // render background
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);

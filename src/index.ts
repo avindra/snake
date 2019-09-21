@@ -22,7 +22,7 @@ function render() {
   } else if (screen === Screen.INGAME) {
     ingame(ctx, world, canvas, scale);
   }
-  setTimeout(() => requestAnimationFrame(render), 80);
+  requestAnimationFrame(render);
 }
 
 window.onkeydown = (e) => {

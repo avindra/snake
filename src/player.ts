@@ -1,7 +1,7 @@
 import Point from './point';
 import keys from './keys';
 
-export default class Player {
+class Player {
   points: Point[];
   headed: number;
   tail: number;
@@ -55,3 +55,9 @@ export default class Player {
     return newHead;
   }
 }
+
+export {
+  Player
+}
+
+export default Player;

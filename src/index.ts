@@ -1,7 +1,7 @@
-import keys, { movementKeys } from './keys';
+import keys, { movementKeys, normalizeKey } from './keys';
 import { init } from './world';
 
-import { Screen } from './screens';
+import { Screen } from './screens/index';
 import intro from './screens/intro';
 import ingame from './screens/ingame';
 
@@ -9,35 +9,41 @@ const $ = a => document.getElementById(a);
 const canvas = $('game') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
 
-const scale = 20;
 const width = 20;
 const height = 20;
+const scale = window.innerHeight / height;
 
 let world = init(width, height);
+
+const rafDelay = 50;
 
 function render() {
   const { screen } = world;
   if (screen === Screen.INTRO) {
-    intro(ctx);
+    intro(scale, ctx);
   } else if (screen === Screen.INGAME) {
     ingame(ctx, world, canvas, scale);
   }
-  requestAnimationFrame(render);
+
+  /**
+   * I'm not sure this is the proper way to implement the game
+   * render loop. Please open a PR if you have a better idea.
+   */
+  setTimeout(() => {
+    requestAnimationFrame(render);
+  }, rafDelay);
 }
 
 window.onkeydown = (e) => {
-  const { keyCode } = e;
+  const { keyCode: keyCodeRaw } = e;
   const { player } = world;
+  const keyCode = normalizeKey(keyCodeRaw);
 
   if (keyCode === keys.R) {
     world = init(width, height);
-    console.log(' a whole new world!', world)
     world.screen = Screen.INGAME;
   } else if (keyCode === keys.enter) {
     world.screen = Screen.INGAME;
-    console.log('w', world);
-    console.log('s', Screen);
-
   }
 
   /**

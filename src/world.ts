@@ -86,7 +86,5 @@ export function init(width, height) {
   data.food = new Point();
   moveFood();
 
-  console.log('player', data.player); // eslint-disable-line no-console
-  console.log('food', data.food); // eslint-disable-line no-console
   return data;
 }

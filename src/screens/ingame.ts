@@ -49,6 +49,6 @@ export default (ctx: CanvasRenderingContext2D, world: IWorld, canvas: HTMLCanvas
 
     if (alive) tick();
     else {
-        death(ctx, score);
+        death(scale, ctx, score);
     }
 }

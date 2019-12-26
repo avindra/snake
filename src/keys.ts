@@ -18,7 +18,24 @@ const keyMap = {
   L: 76,
 }
 
-export const vimKeys = [keyMap.K, keyMap.H, keyMap.L, keyMap.J,];
+
+/**
+ * Support vim motion by normalizing the input to
+ * an arrow key
+ */
+export const normalizeKey = (code: number) => {
+  const iVimDirection = vimKeys.indexOf(code);
+  if (iVimDirection !== -1) {
+    return arrowKeys[iVimDirection];
+  }
+
+  return code;
+
+}
+
+const vimKeys = [keyMap.K, keyMap.H, keyMap.L, keyMap.J,];
 export const arrowKeys = [keyMap.up, keyMap.left, keyMap.right, keyMap.down];
+
+export const movementKeys = [...arrowKeys, ...vimKeys];
 
 export default keyMap as Keys;

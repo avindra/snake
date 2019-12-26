@@ -22,13 +22,3 @@ Visit http://localhost:8080 in your browser
 yarn build
 ```
 
-
-## TODO
-
-On the roadmap:
-
- * Leverage Google's Speech Synthesis API somehow
- * Multiplayer over Websockets?
- * Test suite
- * Others..
-

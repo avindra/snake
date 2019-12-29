@@ -2,6 +2,7 @@ import Point from './point';
 import Player from './player';
 import beep from './sound';
 import { Screen } from './screens/index';
+import {rand} from './util';
 
 export interface IWorld {
   screen: Screen;
@@ -16,10 +17,6 @@ export function setScreen(screen: Screen) {
   data.screen = screen;
 }
 
-function rand(min, max) {
-  const { floor, random } = Math;
-  return floor(random() * (max - min + 1)) + min;
-}
 /* check if food spawn point is on top
  * of the tail
 */
@@ -56,6 +53,11 @@ function moveFood(w: IWorld) {
   ++w.player.tail;
 }
 
+/**
+ * Returns "false" if the player
+ * is dead.
+ * 
+ */
 export function tick(w: IWorld) {
   const { player } = w;
   const playerPos = player.getHead();
@@ -77,10 +79,13 @@ export function tick(w: IWorld) {
     || x > w.width - 1 || y > w.height - 1
   ) {
     player.alive = false;
+    return false;
   }
+
+  return true;
 }
 
-export function init(width, height) {
+export function createWorld(width, height) {
   data.width = width;
   data.height = height;
 

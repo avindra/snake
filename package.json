@@ -6,29 +6,35 @@
   "scripts": {
     "build": "webpack -p && mv dist/app.js dist/app_new.js",
     "dev": "NODE_ENV=development node bin/dev",
+    "sim": "babel-node --extensions '.ts,.js'  src/sim.ts",
+    "train": "babel-node --extensions '.ts,.js'  src/net/train.js",
+    "test-model": "babel-node --extensions '.ts,.js'  src/net/check_model.js",
     "tsc": "tsc",
     "test": "mocha --require ./register-tests.js src/**/*.spec.ts"
   },
-  "keywords": [
-    "snake",
+  "keywords": [ "snake",
     "js",
     "game"
   ],
-  "dependencies": {
-    "webpack": "^4.16.3",
-    "webpack-dev-server": "^3.1.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
     "@babel/register": "^7.6.0",
+    "@tensorflow/tfjs": "^1.5.1",
+    "@tensorflow/tfjs-node": "^1.5.1",
+    "@tensorflow/tfjs-node-gpu": "^1.5.1",
+    "@types/jasmine": "^3.5.0",
     "@types/mocha": "^5.2.7",
     "babel-loader": "^8.0.6",
     "expect": "^24.9.0",
     "mocha": "^6.0.0",
     "typescript": "^3.7.5",
-    "webpack-cli": "^3.1.0"
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   },
   "author": "Avindra Goolcharan",
   "license": "MIT",

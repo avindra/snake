@@ -1,5 +1,5 @@
 import keys, { movementKeys, normalizeKey } from './keys';
-import { init } from './world';
+import { createWorld as init } from './world';
 
 import { Screen } from './screens/index';
 import intro from './screens/intro';

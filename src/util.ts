@@ -4,7 +4,12 @@
  * @param ms Milliseconds to sleep for
  */
 export const sleep = (ms: number) => new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(true);
-    }, ms);
+  setTimeout(() => {
+    resolve(true);
+  }, ms);
 });
+
+export function rand(min, max) {
+  const { floor, random } = Math;
+  return floor(random() * (max - min + 1)) + min;
+}

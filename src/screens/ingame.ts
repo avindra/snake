@@ -49,7 +49,7 @@ export default (ctx: CanvasRenderingContext2D, world: IWorld, canvas: HTMLCanvas
     }
     const score = player.points.length - 1;
 
-    if (alive) tick();
+    if (alive) tick(world);
     else {
         death(scale, ctx, score);
     }

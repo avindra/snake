@@ -35,8 +35,8 @@ function blockingTail(target) {
   return false;
 }
 
-function moveFood() {
-  const { width, height } = data;
+function moveFood(w: IWorld) {
+  const { width, height } = w;
 
   let potentialTarget;
 
@@ -48,21 +48,21 @@ function moveFood() {
   } while (blockingTail(potentialTarget));
 
 
-  data.food.move(
+  w.food.move(
     potentialTarget.x,
     potentialTarget.y,
   );
 
-  ++data.player.tail;
+  ++w.player.tail;
 }
 
-export function tick() {
-  const { player } = data;
+export function tick(w: IWorld) {
+  const { player } = w;
   const playerPos = player.getHead();
 
-  if (playerPos.x === data.food.x
-    && playerPos.y === data.food.y) {
-    moveFood();
+  if (playerPos.x === w.food.x
+    && playerPos.y === w.food.y) {
+    moveFood(w);
     player.consume();
     beep();
   }
@@ -74,7 +74,7 @@ export function tick() {
   const { x, y } = newPos;
   if (
     x < 0 || y < 0
-    || x > data.width - 1 || y > data.height - 1
+    || x > w.width - 1 || y > w.height - 1
   ) {
     player.alive = false;
   }
@@ -86,7 +86,7 @@ export function init(width, height) {
 
   data.player = new Player();
   data.food = new Point();
-  moveFood();
+  moveFood(data);
 
   return data;
 }

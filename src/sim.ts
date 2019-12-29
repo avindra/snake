@@ -1,5 +1,6 @@
-import { init, IWorld } from './world';
+import { init, tick, IWorld } from './world';
 import Point from './point';
+import { sleep } from './util';
 
 /**
  * Run a simulation of the game
@@ -57,6 +58,16 @@ const render = (world: IWorld) => {
         }
     }
 }
-
 const world = init(width, height);
-render(world);
+
+const playGame = async function() {
+    while (true) {
+        render(world);
+        tick(world);
+
+        await sleep(500);
+    }
+
+};
+
+playGame();

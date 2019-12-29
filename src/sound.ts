@@ -1,12 +1,15 @@
-const context = new AudioContext();
-const masterVolume = context.createGain();
-
-masterVolume.gain.value = 0.3;
-masterVolume.connect(context.destination);
+let context: AudioContext;
+let masterVolume: GainNode;
 let currentNote = -1;
 let increasing = true;
 
+if (typeof AudioContext === 'function') {
+  context = new AudioContext();
+  masterVolume = context.createGain();
 
+  masterVolume.gain.value = 0.3;
+  masterVolume.connect(context.destination);
+}
 
 /* walk up and down C major scale */
 const scale = [
@@ -21,6 +24,10 @@ const scale = [
 ];
 
 export default function beep() {
+  // noop if sound is not supported
+  if (!context) {
+    return;
+  }
   const osc = context.createOscillator();
   const osc2 = context.createOscillator();
 

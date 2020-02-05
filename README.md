@@ -1,8 +1,8 @@
 # Snake  [![Build Status](https://img.shields.io/travis/avindra/snake/master.svg?style=flat)](https://travis-ci.org/avindra/snake)
 
-This is a simple game of snake implemented using various web technologies and JavaScript (`ES6`, `canvas`, `Web Audio`, to name a few).
+It is an implementation of the game of snake using reference JavaScript, and `<canvas>` for graphical output. The codebase uses Typescript (mostly for a handful of `interface` descriptions.)
 
-It is both an experiment in implementing the game of snake and in using some of the latest web technologies.
+There is experimental sound: unplug your headphones to rip beeps over your speakers.
 
 [Click here to play!](https://avindra.github.io/snake)
 
@@ -21,4 +21,3 @@ Visit http://localhost:8080 in your browser
 ```
 yarn build
 ```
-

@@ -1,0 +1,23 @@
+#!/usr/bin/node
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+
+const config = require('./../webpack.config.js');
+
+/**
+ * The all 0 HOST default is a convention
+ * for listening on all available interfaces
+ *
+ * (i.e., so that the website can be accessed
+ * remotely on the network.)
+*/
+const {PORT = 8080, HOST='0.0.0.0', NODE_ENV='development'}=process.env;
+
+if (NODE_ENV == 'development') {
+  config.entry.app.unshift(`webpack-dev-server/client?http://${HOST}:${PORT}/`);
+  process.stdout.write(`Webpack is listening on ${PORT}`);
+
+  const compiler = webpack(config);
+  const server = new WebpackDevServer(compiler, {});
+  server.listen(PORT);
+}

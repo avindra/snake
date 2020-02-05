@@ -1,7 +1,7 @@
 import Point from './point';
 import Player from './player';
 import beep from './sound';
-import { Screen } from './screens';
+import { Screen } from './screens/index';
 
 export interface IWorld {
   screen: Screen;

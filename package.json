@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack -p && mv dist/app.js dist/app_new.js",
     "dev": "NODE_ENV=development node bin/dev",
+    "tsc": "tsc",
     "test": "mocha --require ./register-tests.js src/**/*.spec.ts"
   },
   "keywords": [
@@ -26,6 +27,7 @@
     "babel-loader": "^8.0.6",
     "expect": "^24.9.0",
     "mocha": "^6.0.0",
+    "typescript": "^3.7.5",
     "webpack-cli": "^3.1.0"
   },
   "author": "Avindra Goolcharan",

@@ -1,8 +1,5 @@
-
-enum Screen {
+export enum Screen {
   INTRO,
   INGAME,
   DEAD
 }
-
-export { Screen };

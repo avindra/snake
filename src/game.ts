@@ -8,13 +8,25 @@ import ingame from './screens/ingame';
 
 const rafDelay = 50;
 
-const render = (world, canvas, scale) => () => {
-  const { screen } = world;
+/**
+ * Create the render frame with
+ * relevant environmental variables
+ * living in the closure.
+ */
+const createRenderer = (world, canvas, scale) => {
   const ctx = canvas.getContext('2d');
-  if (screen === Screen.INTRO) {
-    intro(scale, ctx);
-  } else if (screen === Screen.INGAME) {
-    ingame(ctx, world, canvas, scale);
+
+  /**
+   * return function to render
+   * on each tick
+   */
+  return () => {
+    const { screen } = world;
+    if (screen === Screen.INTRO) {
+      intro(scale, ctx);
+    } else if (screen === Screen.INGAME) {
+      ingame(ctx, world, canvas, scale);
+    }
   }
 }
 
@@ -45,7 +57,7 @@ export function main(canvas, width, height, scale) {
       player.headed = keyCode;
     }
   };
-  const renderer = render(world, canvas, scale);
+  const renderer = createRenderer(world, canvas, scale);
   /**
    * I'm not sure this is the proper way to implement the game
    * render loop. Please open a PR if you have a better idea.

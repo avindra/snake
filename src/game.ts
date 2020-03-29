@@ -40,10 +40,15 @@ export function main(canvas, width, height, scale) {
     const { player } = world;
     const keyCode = normalizeKey(keyCodeRaw);
 
-    if (keyCode === keys.R) {
+    const hitEnter = keyCode == keys.enter;
+    const hitSpace = keyCode == keys.space;
+    const hitR = keyCode === keys.R;
+    const wantsAnotherGame = !player.alive && (hitEnter || hitSpace);
+
+    if (wantsAnotherGame || hitR) {
       world = init(width, height);
       world.screen = Screen.INGAME;
-    } else if (keyCode === keys.enter) {
+    } else if (hitEnter) {
       world.screen = Screen.INGAME;
     }
 

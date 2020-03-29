@@ -14,5 +14,5 @@ export default (scale: number, ctx: CanvasRenderingContext2D, score) => {
     ctx.fillText(`Your final score is ${score}`, 17, yPos);
 
     ctx.font = `${fontSize(1.4)}px Arial`;
-    ctx.fillText("Press R to respawn", 10, yPos);
+    ctx.fillText("Press Enter to respawn", 10, yPos);
 }

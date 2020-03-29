@@ -16,6 +16,8 @@ const keyMap = {
   J: 74,
   K: 75,
   L: 76,
+  // convenience key for respawn
+  space: 32,
 }
 
 

@@ -1,6 +1,9 @@
 import Point from './point';
 import keys from './keys';
 
+const inc = N => N + 1;
+const dec = N => N - 1;
+
 class Player {
   points: Point[];
   headed: number;
@@ -32,18 +35,21 @@ class Player {
     const head = this.getHead();
 
     const newHead = new Point(head.x, head.y);
-    switch (this.headed) {
-      case up:
-        --newHead.y; break;
-      case down:
-        ++newHead.y; break;
-      case left:
-        --newHead.x; break;
-      case right:
-        ++newHead.x; break;
-      default:
-        throw new Error('wat');
+
+    let direction;
+
+    switch(this.headed) {
+      case up: case left: direction = dec; break;
+      case down: case right: direction = inc; break;
     }
+
+    let att;
+    switch (this.headed) {
+      case up: case down: att = 'y'; break;
+      case left: case right: att = 'x'; break;
+    }
+
+    newHead[att] = direction(newHead[att]);
 
     this.points.unshift(newHead);
     this.points.pop();

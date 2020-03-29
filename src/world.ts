@@ -67,7 +67,9 @@ export function tick() {
     beep();
   }
 
-  /* detect wall collisions */
+  /** 
+   * Wall collision: check if player went out of bounds
+   */
   const newPos = player.tick();
   const { x, y } = newPos;
   if (

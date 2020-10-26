@@ -8,9 +8,9 @@ There is experimental sound: unplug your headphones to rip beeps over your speak
 
 ## Development
 
-```bash
-yarn dev
-```
+ * Node.js 15 or higher
+
+`yarn install && yarn dev` to get a watch/recompile server, otherwise just use the build script.
 
 Unit tests are co-located with the code.
 

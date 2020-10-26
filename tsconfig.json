@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "module": "es2015"
+        "module": "ESNext"
     },
     "exclude": [
-	"**/*.spec.ts"
+        "**/*.spec.ts"
     ]
 }

@@ -11,5 +11,6 @@ env:
   - CMD=tsc
   - CMD=test
   - CMD=build
+  - CMD=tsc
 
 script: npm run $CMD

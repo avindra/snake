@@ -6,7 +6,7 @@ export default class Point {
     this.move(x, y);
   }
 
-  move(x, y) {
+  move(x: number, y: number) {
     this.x = x;
     this.y = y;
   }

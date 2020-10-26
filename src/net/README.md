@@ -1,6 +1,10 @@
 
 ## Common errors / workflow stuff
 
+```sh
+yarn build:tfjs
+```
+
 Problem: Binding errors from tensorflow
 
 Solution: rebuild the package

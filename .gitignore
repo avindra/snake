@@ -1,6 +1,0 @@
-node_modules
-
-# in a critical production app, a good idea
-# annoying to deal with in a hobby project :)
-
-package-lock.json

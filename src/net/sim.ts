@@ -38,6 +38,6 @@ const playGame = async function() {
 
 };
 
-if (require.main === module) {
+if (process.env.NODE) {
   playGame();
 }

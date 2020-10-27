@@ -9,5 +9,4 @@
 # https://github.com/TypeStrong/ts-node/issues/935#issuecomment-582673034
 #
 
-
 node --loader @k-foss/ts-esnode --experimental-specifier-resolution=node $@

@@ -12,7 +12,7 @@
     "train": "bin/tsnode src/net/train.js",
     "test-model": "node src/net/check_model.js",
     "tsc": "tsc",
-    "test": "mocha --require ts-node/register src/**/*.spec.ts"
+    "test": "bin/tsnode node_modules/mocha/bin/_mocha src/**/*.spec.ts"
   },
   "keywords": [
     "snake",

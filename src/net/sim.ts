@@ -11,7 +11,6 @@ import {worldToVector} from './worldToVector'
 const width = 20;
 const height = 20;
 
-
 const render = (world: IWorld) => {
   const { width } = world;
   const inputVector = worldToVector(world);
@@ -23,9 +22,10 @@ const render = (world: IWorld) => {
     }
   }
 }
-const world = createWorld(width, height);
 
-const playGame = async function() {
+process.env.NODE && (async() => {
+  const world = createWorld(width, height);
+
   let alive = true;
   while (alive) {
     render(world);
@@ -35,9 +35,4 @@ const playGame = async function() {
     world.player.headed = arrowKeys[direction];
     await sleep(500);
   }
-
-};
-
-if (process.env.NODE) {
-  playGame();
-}
+})();

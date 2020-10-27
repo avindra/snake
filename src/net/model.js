@@ -11,5 +11,6 @@ export const createModel = (inputVectorSize) => {
 
   // Prepare the model for training: Specify the loss and the optimizer.
   model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
+  model.summary();
   return model;
 }

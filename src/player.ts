@@ -1,8 +1,12 @@
-import Point from './point';
-import keys from './keys';
+// @ts-ignore
+import Point from './point.ts';
+// @ts-ignore
+import keys from './keys.ts';
 
-const inc = N => N + 1;
-const dec = N => N - 1;
+type NumIdent = (N: number) => number;
+
+const inc: NumIdent = (N) => N + 1;
+const dec: NumIdent = (N) => N - 1;
 
 class Player {
   points: Point[];
@@ -34,21 +38,23 @@ class Player {
 
     const head = this.getHead();
 
-    const newHead = new Point(head.x, head.y);
+    const newHead = new Point();
+    newHead.move(head.x, head.y);
 
-    let direction;
+    let direction: NumIdent;
 
     switch(this.headed) {
       case up: case left: direction = dec; break;
       case down: case right: direction = inc; break;
     }
 
-    let att;
+    let att: string;
     switch (this.headed) {
       case up: case down: att = 'y'; break;
       case left: case right: att = 'x'; break;
     }
 
+    // @ts-ignore
     newHead[att] = direction(newHead[att]);
 
     this.points.unshift(newHead);

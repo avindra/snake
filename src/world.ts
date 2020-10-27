@@ -38,7 +38,8 @@ function moveFood(w: IWorld) {
   let potentialTarget;
 
   do {
-    potentialTarget = new Point(
+    potentialTarget = new Point();
+    potentialTarget.move(
       rand(0, width - 1),
       rand(0, height - 1),
     );

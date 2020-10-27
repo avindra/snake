@@ -1,8 +1,10 @@
 {
     "compilerOptions": {
-        "module": "ESNext"
+        "module": "ESNext",
+        "skipLibCheck": true,
+        "lib": ["dom"]
     },
     "exclude": [
-        "**/*.spec.ts"
+        "**/*.test.ts"
     ]
 }

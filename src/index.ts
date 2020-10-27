@@ -8,6 +8,7 @@ import ingame from './screens/ingame';
 
 const $ = a => document.getElementById(a);
 const canvas = $('game') as HTMLCanvasElement;
+const ctx = canvas.getContext('2d');
 
 const width = 20;
 const height = 20;

@@ -4,20 +4,16 @@ It is an implementation of the game of snake using reference JavaScript, and `<c
 
 There is experimental sound: unplug your headphones to rip beeps over your speakers.
 
-[Click here to play!](https://avindra.github.io/snake)
+[Click to play 🐍!](https://avindra.github.io/snake)
 
-## Development
+## Requirements
 
  * Node.js 15 or higher
+ * Deno (for unit tests)
 
-`yarn install && yarn dev` to get a watch/recompile server, otherwise just use the build script.
+## Usage
 
-Unit tests are co-located with the code.
-
-Visit http://localhost:8080 in your browser
-
-## Production build
-
-```
-yarn build
-```
+ * `yarn build` to bundle a build in `dist/`
+ * `yarn install && yarn dev` to get a watch/recompile server
+ * Unit tests are co-located with the code.
+   * Run [`deno test src`](https://deno.land/manual/testing#assertions) to run unit tests.

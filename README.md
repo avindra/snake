@@ -1,4 +1,4 @@
-# Snake  [![Build Status](https://img.shields.io/travis/avindra/snake/master.svg?style=flat)](https://travis-ci.org/avindra/snake)
+# Snake  [![Build Status](https://github.com/avindra/snake/workflows/ci/badge.svg)](https://github.com/avindra/snake/actions)
 
 It is an implementation of the game of snake using reference JavaScript, and `<canvas>` for graphical output. The codebase uses Typescript (mostly for a handful of `interface` descriptions.)
 

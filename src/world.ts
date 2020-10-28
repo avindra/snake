@@ -1,8 +1,8 @@
-import Point from './point';
-import Player from './player';
-import beep from './sound';
-import { Screen } from './screens/index';
-import {rand} from './util';
+import Point from './point.ts';
+import Player from './player.ts';
+import beep from './sound.ts';
+import { Screen } from './screens/index.ts';
+import {rand} from './util.ts';
 
 export interface IWorld {
   screen: Screen;
@@ -11,7 +11,16 @@ export interface IWorld {
   height: number;
   food: Point;
 }
-const data: IWorld = { screen: Screen.INTRO, player: null, width: 0, height: 0, food: null };
+
+export const initWorld = (width = 0, height = 0) => ({
+  screen: Screen.INTRO,
+  player: new Player(),
+  food: new Point(),
+  width,
+  height,
+});
+
+const data: IWorld = initWorld();
 
 export function setScreen(screen: Screen) {
   data.screen = screen;
@@ -20,7 +29,7 @@ export function setScreen(screen: Screen) {
 /* check if food spawn point is on top
  * of the tail
 */
-function blockingTail(target) {
+function blockingTail(target: Point) {
   const { points } = data.player;
   for (let i = 0; i < points.length; ++i) {
     const p = points[i];
@@ -86,12 +95,10 @@ export function tick(w: IWorld) {
   return true;
 }
 
-export function createWorld(width, height) {
+export function createWorld(width: number, height: number) {
   data.width = width;
   data.height = height;
 
-  data.player = new Player();
-  data.food = new Point();
   moveFood(data);
 
   return data;

@@ -1,9 +1,10 @@
-import { IWorld } from './../world';
-import keys from './../keys';
+import { IWorld } from './../world.ts';
+import keys from './../keys.ts';
 
-import { tick } from './../world';
+import { tick } from './../world.ts';
 
-import death from './death';
+import death from './death.ts';
+
 export default (ctx: CanvasRenderingContext2D, world: IWorld, canvas: HTMLCanvasElement, scale: number) => {
     const { player, food,} = world;
     // render the void

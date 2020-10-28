@@ -9,7 +9,7 @@ export const sleep = (ms: number) => new Promise((resolve, reject) => {
   }, ms);
 });
 
-export function rand(min, max) {
+export function rand(min: number, max: number) {
   const { floor, random } = Math;
   return floor(random() * (max - min + 1)) + min;
 }

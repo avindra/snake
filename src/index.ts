@@ -1,10 +1,10 @@
-import {main} from './game';
-import keys, { movementKeys, normalizeKey } from './keys';
-import { createWorld } from './world';
+import {main} from './game.ts';
+import keys, { movementKeys, normalizeKey } from './keys.ts';
+import { createWorld } from './world.ts';
 
-import { Screen } from './screens/index';
-import intro from './screens/intro';
-import ingame from './screens/ingame';
+import { Screen } from './screens/index.ts';
+import intro from './screens/intro.ts';
+import ingame from './screens/ingame.ts';
 
 const $ = a => document.getElementById(a);
 const canvas = $('game') as HTMLCanvasElement;

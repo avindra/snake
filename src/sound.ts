@@ -1,9 +1,13 @@
+// @ts-ignore
 let context: AudioContext;
+// @ts-ignore
 let masterVolume: GainNode;
 let currentNote = -1;
 let increasing = true;
 
+// @ts-ignore
 if (typeof AudioContext === 'function') {
+  // @ts-ignore
   context = new AudioContext();
   masterVolume = context.createGain();
 

@@ -1,9 +1,9 @@
-import keys, { movementKeys, normalizeKey } from './keys';
-import { createWorld as init } from './world';
+import keys, { movementKeys, normalizeKey } from './keys.ts';
+import { createWorld as init } from './world.ts';
 
-import { Screen } from './screens/index';
-import intro from './screens/intro';
-import ingame from './screens/ingame';
+import { Screen } from './screens/index.ts';
+import intro from './screens/intro.ts';
+import ingame from './screens/ingame.ts';
 
 
 const rafDelay = 50;

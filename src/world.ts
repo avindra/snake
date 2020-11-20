@@ -20,13 +20,6 @@ export const initWorld = (width = 0, height = 0) => ({
   height,
 });
 
-// Todo: refactor code to nix this local instance
-let data: IWorld;
-
-export function setScreen(screen: Screen) {
-  data.screen = screen;
-}
-
 /* check if food spawn point is on top
  * of the tail
 */
@@ -97,7 +90,7 @@ export function tick(w: IWorld) {
 }
 
 export function createWorld(width: number, height: number) {
-  data = initWorld();
+  const data = initWorld();
   data.width = width;
   data.height = height;
 

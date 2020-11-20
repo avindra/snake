@@ -12,5 +12,4 @@ jobs:
         with:
           deno-version: v1.x
       - run: |
-          deno --version
           deno test src

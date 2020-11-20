@@ -30,8 +30,8 @@ export function setScreen(screen: Screen) {
 /* check if food spawn point is on top
  * of the tail
 */
-function blockingTail(target: Point) {
-  const { points } = data.player;
+function blockingTail(player: Player, target: Point) {
+  const { points } = player;
   for (let i = 0; i < points.length; ++i) {
     const p = points[i];
     if (p.equals(target)) {
@@ -53,7 +53,7 @@ function moveFood(w: IWorld) {
       rand(0, width - 1),
       rand(0, height - 1),
     );
-  } while (blockingTail(potentialTarget));
+  } while (blockingTail(w.player, potentialTarget));
 
 
   w.food.move(

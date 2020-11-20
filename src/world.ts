@@ -20,7 +20,8 @@ export const initWorld = (width = 0, height = 0) => ({
   height,
 });
 
-const data: IWorld = initWorld();
+// Todo: refactor code to nix this local instance
+let data: IWorld;
 
 export function setScreen(screen: Screen) {
   data.screen = screen;
@@ -96,6 +97,7 @@ export function tick(w: IWorld) {
 }
 
 export function createWorld(width: number, height: number) {
+  data = initWorld();
   data.width = width;
   data.height = height;
 

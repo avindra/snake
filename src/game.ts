@@ -32,6 +32,7 @@ const createRenderer = (world, canvas, scale) => {
 
 export function main(canvas, width, height, scale) {
   let world = init(width, height);
+  let renderer = createRenderer(world, canvas, scale);
   canvas.width = width * scale;
   canvas.height = height * scale;
 
@@ -47,6 +48,7 @@ export function main(canvas, width, height, scale) {
 
     if (wantsAnotherGame || hitR) {
       world = init(width, height);
+      renderer = createRenderer(world, canvas, scale);
       world.screen = Screen.INGAME;
     } else if (hitEnter) {
       world.screen = Screen.INGAME;
@@ -62,7 +64,6 @@ export function main(canvas, width, height, scale) {
       player.headed = keyCode;
     }
   };
-  const renderer = createRenderer(world, canvas, scale);
   /**
    * I'm not sure this is the proper way to implement the game
    * render loop. Please open a PR if you have a better idea.

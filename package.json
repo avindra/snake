@@ -7,7 +7,7 @@
   "scripts": {
     "build": "esbuild --bundle src/index.ts --outdir=dist --minify && cp index.html dist",
     "build:tfjs": "npm rebuild @tensorflow/tfjs-node-gpu --build-from-source",
-    "dev": "node bin/dev.js",
+    "dev": "deno run --allow-read --allow-run bin/dev.js",
     "sim": "bin/tsnode src/net/sim.ts",
     "train": "bin/tsnode src/net/train.js",
     "test-model": "node src/net/check_model.js",
@@ -25,8 +25,7 @@
     "@tensorflow/tfjs": "^2.6.0",
     "@tensorflow/tfjs-node": "^2.6.0",
     "@tensorflow/tfjs-node-gpu": "^2.6.0",
-    "browser-sync": "^2.26.13",
-    "esbuild": "^0.7.21",
+    "esbuild": "^0.8.12",
     "typescript": "^4.0.3"
   },
   "author": "Avindra Goolcharan",

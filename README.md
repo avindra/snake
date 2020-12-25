@@ -8,8 +8,8 @@ There is experimental sound: unplug your headphones to rip beeps over your speak
 
 ## Requirements
 
- * Node.js 15 or higher
- * Deno (for unit tests)
+ * Deno (for unit tests and development)
+ * Node.js 15 or higher (for nets)
 
 ## Usage
 

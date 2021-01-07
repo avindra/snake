@@ -1,5 +1,5 @@
 import keys, { movementKeys, normalizeKey } from './keys.ts';
-import { createWorld as init } from './world.ts';
+import { createWorld as init, IWorld } from './world.ts';
 
 import { Screen } from './screens/index.ts';
 import intro from './screens/intro.ts';
@@ -8,35 +8,33 @@ import ingame from './screens/ingame.ts';
 
 const rafDelay = 50;
 
+const is_tty = !('requestAnimationFrame' in self);
+
+
 /**
- * Create the render frame with
- * relevant environmental variables
- * living in the closure.
+ * Setup rendering functions
  */
-const createRenderer = (world, canvas, scale) => {
-  const ctx = canvas.getContext('2d');
-
-  /**
-   * return function to render
-   * on each tick
-   */
-  return () => {
-    const { screen } = world;
-    if (screen === Screen.INTRO) {
-      intro(scale, ctx);
-    } else if (screen === Screen.INGAME) {
-      ingame(ctx, world, canvas, scale);
-    }
-  }
-}
-
-export function main(canvas, width, height, scale) {
+export const main = (canvas: HTMLCanvasElement, width: number, height: number, scale: number, render_impl?: Function) => {
+  // todo: have this not be a "let"
   let world = init(width, height);
-  let renderer = createRenderer(world, canvas, scale);
-  canvas.width = width * scale;
-  canvas.height = height * scale;
+  const ctx = canvas.getContext('2d');
+  const ticker = () => {
+    const s = world.screen;
+    if (s === Screen.INTRO) {
+      intro(scale, ctx!);
+    } else if (s === Screen.INGAME) {
+      ingame(ctx!, world, canvas, scale);
+    }
+  };
 
-  window.onkeydown = (e) => {
+  const action = is_tty ? () => {
+    ticker();
+    render_impl();
+   } : () => {
+    requestAnimationFrame(ticker);
+  };
+
+  const onKeyDown = (e: KeyboardEvent) => {
     const { keyCode: keyCodeRaw } = e;
     const { player } = world;
     const keyCode = normalizeKey(keyCodeRaw);
@@ -46,11 +44,10 @@ export function main(canvas, width, height, scale) {
     const hitR = keyCode === keys.R;
     const wantsAnotherGame = !player.alive && (hitEnter || hitSpace);
 
-    if (wantsAnotherGame || hitR) {
-      world = init(width, height);
-      renderer = createRenderer(world, canvas, scale);
-      world.screen = Screen.INGAME;
-    } else if (hitEnter) {
+    if (hitR || hitEnter) {
+      if (wantsAnotherGame) {
+        world = init(width, height);
+      }
       world.screen = Screen.INGAME;
     }
 
@@ -64,14 +61,12 @@ export function main(canvas, width, height, scale) {
       player.headed = keyCode;
     }
   };
-  /**
-   * I'm not sure this is the proper way to implement the game
-   * render loop. Please open a PR if you have a better idea.
-   */
-  const pid = setInterval(() => {
-    requestAnimationFrame(renderer);
-  }, rafDelay);
 
-  return pid
+  canvas.width = width * scale;
+  canvas.height = height * scale;
+
+  window.onkeydown = onKeyDown;
+
+
+  return () => setInterval(action, rafDelay);
 }
-

@@ -3,6 +3,7 @@ import Player from './player.ts';
 import beep from './sound.ts';
 import { Screen } from './screens/index.ts';
 import {rand} from './util.ts';
+import {createSpawner} from './spawn.ts';
 
 export interface IWorld {
   screen: Screen;
@@ -12,13 +13,22 @@ export interface IWorld {
   food: Point;
 }
 
-export const initWorld = (width = 0, height = 0) => ({
-  screen: Screen.INTRO,
-  player: new Player(),
-  food: new Point(),
-  width,
-  height,
-});
+export const initWorld = (width = 0, height = 0) => {
+  const spawner = createSpawner(width, height);
+  const [loc, dir] = spawner();
+  const player = new Player();
+  player.points[0] = loc;
+  player.headed = dir;
+
+  const data = {
+    screen: Screen.INTRO,
+    player,
+    food: new Point(),
+    width,
+    height,
+  };
+  return data;
+};
 
 /* check if food spawn point is on top
  * of the tail
@@ -90,7 +100,7 @@ export function tick(w: IWorld) {
 }
 
 export function createWorld(width: number, height: number) {
-  const data = initWorld();
+  const data = initWorld(width, height);
   data.width = width;
   data.height = height;
 

@@ -1,8 +1,7 @@
 let cache = false;
 
-export default (scale, ctx: CanvasRenderingContext2D) => {
+export default (scale: number, ctx: CanvasRenderingContext2D) => {
     if (cache) {
-        console.log('restoring cache', cache)
         ctx.restore();
         return;
     }

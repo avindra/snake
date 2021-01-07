@@ -6,14 +6,11 @@ There is experimental sound: unplug your headphones to rip beeps over your speak
 
 [Click to play 🐍!](https://avindra.github.io/snake)
 
-## Requirements
-
- * Deno (for unit tests and development)
- * Node.js 15 or higher (for nets)
-
 ## Usage
 
- * `yarn build` to bundle a build in `dist/`
- * `yarn install && yarn dev` to get a watch/recompile server
+You need `deno` and `esbuild` to test and build. A `Makefile` is included for convenience.
+
+ * `make build` to bundle a build in `dist/`
+ * `make dev` to get a watch/recompile server
  * Unit tests are co-located with the code.
    * Run [`deno test src`](https://deno.land/manual/testing#assertions) to run unit tests.

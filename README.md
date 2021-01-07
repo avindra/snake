@@ -6,11 +6,17 @@ There is experimental sound: unplug your headphones to rip beeps over your speak
 
 [Click to play 🐍!](https://avindra.github.io/snake)
 
-## Usage
+## Development
 
-You need `deno` and `esbuild` to test and build. A `Makefile` is included for convenience.
+A [`Makefile`](./Makefile) is included for convenience.
 
- * `make build` to bundle a build in `dist/`
- * `make dev` to get a watch/recompile server
- * Unit tests are co-located with the code.
-   * Run [`deno test src`](https://deno.land/manual/testing#assertions) to run unit tests.
+`esbuild` is  used to build/bundle.
+
+You need `deno` for testing and developing.
+
+The dev server provides no HTTP server (use another program to serve the dir, like python's built in server).
+
+ * run `make build` to build/bundle
+ * run `make dev` to get a watch/recompile server
+ * run [`deno test src`](https://deno.land/manual/testing#assertions) to run unit tests
+   - Unit tests are co-located into src/

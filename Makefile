@@ -1,7 +1,16 @@
 DENO ?= deno
 
 train:
-	@bin/tsnode src/net/train.js
+	@bin/tsnode train.js
+
+sim:
+	@bin/tsnode sim.ts
+
+setup:
+	@cd src/net && npm rebuild @tensorflow/tfjs-node-gpu --build-from-source
+
+test-model:
+	@cd src/net && node check_model.js
 
 dev:
 	@$(DENO) run --allow-read --allow-run bin/dev.js

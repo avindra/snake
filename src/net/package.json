@@ -3,12 +3,7 @@
   "version": "0.0.1",
   "description": "A brain for snake using ML training regimes.",
   "type": "module",
-  "scripts": {
-    "build:tfjs": "npm rebuild @tensorflow/tfjs-node-gpu --build-from-source",
-    "sim": "./../../bin/tsnode sim.ts",
-    "train": "./../../bin/tsnode train.js",
-    "test-model": "node check_model.js"
-  },
+  "scripts": {},
   "dependencies": {},
   "devDependencies": {
     "@k-foss/ts-esnode": "^1.7.0",

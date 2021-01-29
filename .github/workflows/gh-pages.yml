@@ -7,16 +7,16 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: '14.x'
-
-      - run: npm install esbuild
-      - run: ./node_modules/.bin/esbuild --bundle src/index.ts --outdir=public --minify
+      - name: Setup esbuild
+        run: |
+          wget -q https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.8.33.tgz
+          tar xf esbuild-linux-64-0.8.33.tgz
+          mv package/bin/esbuild bin
+          rm -fr package
+      - run: ./bin/esbuild --bundle src/index.ts --outdir=public --minify
       - run: cp index.html public
 
       - name: Deploy

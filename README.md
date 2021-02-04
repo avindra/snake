@@ -10,13 +10,11 @@ There is experimental sound: unplug your headphones to rip beeps over your speak
 
 A [`Makefile`](./Makefile) is included for convenience.
 
-`esbuild` is  used to build/bundle.
+`esbuild` is used to build/bundle.
 
-You need `deno` for testing and developing.
-
-The dev server provides no HTTP server (use another program to serve the dir, like python's built in server).
+`deno` is used for unit testing.
 
  * run `make build` to build/bundle
- * run `make dev` to get a watch/recompile server
+ * run `make dev` to get a watch/recompile workflow (requires Python 3 for http server)
  * run [`deno test src`](https://deno.land/manual/testing#assertions) to run unit tests
    - Unit tests are co-located into src/

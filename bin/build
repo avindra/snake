@@ -1,0 +1,28 @@
+#!/bin/sh
+
+CMD=esbuild
+
+# detect and support local esbuild (CI uses this)
+if [ -f bin/esbuild ]; then
+  CMD=bin/esbuild
+fi
+
+dev=0
+if [ $# -gt 0 ]; then
+  dev=1
+fi
+
+mkdir -p public
+cp index.html public
+
+if [ "$dev" == "1" ]; then
+  # startup http server
+  trap 'kill -9 %1' 2
+  python3 -m http.server 8000 --directory public &
+fi
+
+$CMD --bundle src/index.ts --outdir=public --minify $@
+
+if [ "$dev" == "1" ]; then
+  wait
+fi

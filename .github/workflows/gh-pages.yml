@@ -12,12 +12,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup esbuild
         run: |
-          wget -q https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.8.33.tgz
-          tar xf esbuild-linux-64-0.8.33.tgz
+          wget -q https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.8.41.tgz
+          tar xf esbuild-linux-64-0.8.41.tgz
           mv package/bin/esbuild bin
           rm -fr package
-      - run: ./bin/esbuild --bundle src/index.ts --outdir=public --minify
-      - run: cp index.html public
+      - run: ./bin/build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

@@ -13,11 +13,10 @@ test-model:
 	@cd src/net && node check_model.js
 
 dev:
-	@$(DENO) run --allow-read --allow-run bin/dev.js
+	@bin/build --watch
 
 build:
-	@esbuild --bundle src/index.ts --outdir=public --minify
-	@cp index.html public
+	@bin/build
 
 play:
 	@$(DENO) run -c tsconfig.json --unstable --no-check src/tty.ts

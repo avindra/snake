@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup esbuild
         run: |
-          wget -q https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.8.41.tgz
-          tar xf esbuild-linux-64-0.8.41.tgz
+          wget -q https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.8.46.tgz
+          tar xf esbuild-linux-64-0.8.46.tgz
           mv package/bin/esbuild bin
           rm -fr package
       - run: ./bin/build

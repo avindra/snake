@@ -7,7 +7,4 @@ if [ -f bin/esbuild ]; then
   CMD=bin/esbuild
 fi
 
-mkdir -p public
-cp index.html public
-
-$CMD --bundle src/index.ts --outdir=public --minify $@
+$CMD --bundle src/index.ts --outdir=www --minify $@

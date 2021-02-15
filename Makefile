@@ -13,7 +13,7 @@ test-model:
 	@cd src/net && node check_model.js
 
 dev:
-	@bin/build --servedir=public
+	@bin/build --servedir=www
 
 build:
 	@bin/build
